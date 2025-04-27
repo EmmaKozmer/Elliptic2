@@ -11,6 +11,10 @@ conda create --name elliptic --file requirements.txt
 
 and then install [PyTorch](https://pytorch.org/get-started/previous-versions/) and [PyTorch_Geometric](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html) based on the specific GPU setup of your own system, following the official guides. Also install the additional libraries torch_scatter, torch_sparse, torch_cluster, and torch_spline_conv while installing pytorch geometric.
 
+Activate the python environment using the command below
+```
+conda activate elliptic
+```
 
 #### Download Data
 
