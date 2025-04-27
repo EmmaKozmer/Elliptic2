@@ -1,0 +1,8 @@
+dataset/
+GLASS/
+sub2vec/sub2vec_inpput/
+sub2vec/sub2vec_inpput.walk
+edge_list.txt
+label.pkl
+n2id.pkl
+subgraphs.pth

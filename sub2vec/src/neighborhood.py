@@ -15,13 +15,16 @@ def generateWalkFile(dirName, walkLength):
     walkFile = open(dirName+'.walk', 'w')
     indexToName = {}
     
+    print("Generating walk file", dirName)
+    print("is directory exist: ", os.path.isdir(dirName))
     for  root, dirs, files in os.walk(dirName):
         index = 0
+        print("Number of files: ", len(files))
         for name in files:
             if index %100 == 0:
                 print(name)
             subgraph = graphUtils_n.getGraph(os.path.join(root, name))
-            # print(subgraph)
+            print(subgraph)
             # print(random.choice(list(subgraph.nodes())))
             walk = graphUtils_n.randomWalk(subgraph, walkLength)
             walkFile.write(arr2str(walk) +"\n")
@@ -51,7 +54,7 @@ def neighborhood_embedding(args):
     window = args.windowSize
     dm = 1 if args.model == 'dm' else 0
     if not os.path.isfile(inputDir+'.walk'):
-        indexToName = generateWalkFile(inputDir, args.walkLength, args.p)
+        indexToName = generateWalkFile(inputDir, args.walkLength) #, args.p)
     else:
         print(".walk file already exist")
         indexToName = {}
@@ -65,10 +68,5 @@ def neighborhood_embedding(args):
     model = doc.Doc2Vec(sentences, vector_size = dimensions, epochs = iterations, dm = dm, window = window )
     
     saveVectors(list(model.dv.vectors), outputFile, indexToName)
-    
-    
-    
-    
-    
 
-    
+
